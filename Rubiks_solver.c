@@ -58,380 +58,19 @@ static void MX_USART2_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-//pins PA5, PA6, and PA7 used for DEMUX selection of motors
-void FrontRightMotor(void) {		//6 clockwise moves but are actually 6 counterclockwise moves from motor perspective
-	int i;
-	GPIOA->ODR = 0x00; //select 0
-	
-	GPIOB->ODR = 0x1;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x3;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x2;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0xA;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x8;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x18;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x10;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x11;
-	for(i = 1; i<3500; i++);
-		
-	GPIOA->ODR = 0x0;
-}
 
-void BackLeftMotor(void) {
-	int i;
-	GPIOA->ODR = 0x20;	//select 1
-	
-	GPIOB->ODR = 0x1;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x3;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x2;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0xA;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x8;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x18;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x10;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x11;
-	for(i = 1; i<3500; i++);
-		
-	GPIOA->ODR = 0x0;
-}
-	
-void RightForwardMotor(void) {
-	int i;
-	GPIOA->ODR = 0x40;	//select 2
-	
-	GPIOB->ODR = 0x1;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x3;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x2;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0xA;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x8;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x18;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x10;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x11;
-	for(i = 1; i<3500; i++);
-		
-	GPIOA->ODR = 0x0;		
-}
-	
-void LeftBackwardMotor(void)	{
-	int i;
-	GPIOA->ODR = 0x60;	//select 3
-	
-	GPIOB->ODR = 0x1;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x3;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x2;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0xA;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x8;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x18;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x10;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x11;
-	for(i = 1; i<3500; i++);
-		
-	GPIOA->ODR = 0x0;
-}
-
-void TopRightMotor(void)	{
-	int i;
-	GPIOA->ODR = 0x80;	//select 4
-	
-	GPIOB->ODR = 0x1;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x3;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x2;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0xA;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x8;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x18;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x10;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x11;
-	for(i = 1; i<3500; i++);
-		
-	GPIOA->ODR = 0x0;
-}
-
-void BottomRightMotor(void) {
-	int i;
-	GPIOA->ODR = 0xA0;	//select 5
-	
-	GPIOB->ODR = 0x1;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x3;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x2;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0xA;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x8;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x18;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x10;
-	for(i = 1; i<3500; i++);
-	
-	GPIOB->ODR = 0x11;
-	for(i = 1; i<3500; i++);
-		
-	GPIOA->ODR = 0x0;
-}
-void FrontLeftMotor(void) {	//6 counterclockwise moves but actually 6 clockwise moves from motor perspective
-		int i;
-		GPIOA->ODR = 0x00;	//select 0
-	
-		GPIOB->ODR = 0x11;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x10;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x18;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x8;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0xA;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x2;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x3;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x1;
-		for(i = 1; i<3500; i++);
-	
-		GPIOA->ODR = 0x0;
-}
-	
-void BackRightMotor(void) {
-		int i;
-		GPIOA->ODR = 0x20;	//select 1
-	
-		GPIOB->ODR = 0x11;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x10;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x18;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x8;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0xA;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x2;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x3;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x1;
-		for(i = 1; i<3500; i++);
-	
-		GPIOA->ODR = 0x0;
-}
-
-void RightBackwardMotor(void) {
-		int i;
-		GPIOA->ODR = 0x40;	//select 2
-	
-		GPIOB->ODR = 0x11;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x10;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x18;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x8;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0xA;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x2;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x3;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x1;
-		for(i = 1; i<3500; i++);
-	
-		GPIOA->ODR = 0x0;
-}
-
-void LeftForwardMotor(void) {
-		int i;
-		GPIOA->ODR = 0x60;	//select 3
-	
-		GPIOB->ODR = 0x11;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x10;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x18;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x8;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0xA;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x2;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x3;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x1;
-		for(i = 1; i<3500; i++);
-	
-		GPIOA->ODR = 0x0;
-}
-
-void TopLeftMotor(void)	{
-		int i;
-		GPIOA->ODR = 0x80;		//select 4
-	
-		GPIOB->ODR = 0x11;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x10;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x18;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x8;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0xA;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x2;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x3;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x1;
-		for(i = 1; i<3500; i++);
-	
-		GPIOA->ODR = 0x0;
-}
-
-void BottomLeftMotor(void)	{
-		int i;
-		GPIOA->ODR = 0xA0;	//select 5
-	
-		GPIOB->ODR = 0x11;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x10;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x18;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x8;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0xA;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x2;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x3;
-		for(i = 1; i<3500; i++);
-	
-		GPIOB->ODR = 0x1;
-		for(i = 1; i<3500; i++);
-	
-		GPIOA->ODR = 0x0;
-}
-
-	
 	//Defines the matrix for each side of the cube
+	//Cube is oriented so Red is facing forward and green is on top
+
+/* Orange  = 1
+ * Yellow  = 2
+ * White 	 = 3
+ * Blue    = 4
+ * Green   = 5
+ * Red     = 6
+ * */
+
+
 int orange[3][3] = {
 {5,2,1},
 {3,1,5},
@@ -471,8 +110,366 @@ int red[3][3] = {
 int Moves[500];
 int m = 0;
 
+int Front = 0;
+int Back = 0;
+int Right = 0;
+int Left = 0;
+int Top = 0;
+int Bottom = 0;
+
+
+//pins PB5, PB6, and PB7 used for DEMUX selection of motors
+void FrontRightMotor(void) {		//6 clockwise moves but are actually 6 counterclockwise moves from motor perspective
+	int i;
+	GPIOB->ODR = 0x00; //select 0
+
+	GPIOA->ODR = 0x1;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x3;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x2;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0xA;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x8;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x18;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x10;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x11;
+	for(i = 1; i<4000; i++);
+}
+
+void BackLeftMotor(void) {
+	int i;
+	GPIOB->ODR = 0x20;	//select 1
+
+	GPIOA->ODR = 0x1;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x3;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x2;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0xA;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x8;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x18;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x10;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x11;
+	for(i = 1; i<4000; i++);
+}
+
+void RightForwardMotor(void) {
+	int i;
+	GPIOB->ODR = 0x40;	//select 2
+
+	GPIOA->ODR = 0x1;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x3;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x2;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0xA;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x8;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x18;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x10;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x11;
+	for(i = 1; i<4000; i++);
+}
+
+void LeftBackwardMotor(void)	{
+	int i;
+	GPIOB->ODR = 0x60;	//select 3
+
+	GPIOA->ODR = 0x1;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x3;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x2;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0xA;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x8;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x18;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x10;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x11;
+	for(i = 1; i<4000; i++);
+}
+
+void TopRightMotor(void)	{
+	int i;
+	GPIOB->ODR = 0x80;	//select 4
+
+	GPIOA->ODR = 0x1;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x3;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x2;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0xA;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x8;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x18;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x10;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x11;
+	for(i = 1; i<4000; i++);
+}
+
+void BottomRightMotor(void) {
+	int i;
+	GPIOB->ODR = 0xA0;	//select 5
+
+	GPIOA->ODR = 0x1;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x3;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x2;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0xA;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x8;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x18;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x10;
+	for(i = 1; i<4000; i++);
+
+	GPIOA->ODR = 0x11;
+	for(i = 1; i<4000; i++);
+}
+void FrontLeftMotor(void) {	//6 counterclockwise moves but actually 6 clockwise moves from motor perspective
+		int i;
+		GPIOB->ODR = 0x00;	//select 0
+
+		GPIOA->ODR = 0x11;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x10;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x18;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x8;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0xA;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x2;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x3;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x1;
+		for(i = 1; i<4000; i++);
+}
+
+void BackRightMotor(void) {
+		int i;
+		GPIOB->ODR = 0x20;	//select 1
+
+		GPIOA->ODR = 0x11;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x10;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x18;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x8;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0xA;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x2;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x3;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x1;
+		for(i = 1; i<4000; i++);
+}
+
+void RightBackwardMotor(void) {
+		int i;
+		GPIOB->ODR = 0x40;	//select 2
+
+		GPIOA->ODR = 0x11;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x10;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x18;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x8;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0xA;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x2;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x3;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x1;
+		for(i = 1; i<4000; i++);
+}
+
+void LeftForwardMotor(void) {
+		int i;
+		GPIOB->ODR = 0x60;	//select 3
+
+		GPIOA->ODR = 0x11;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x10;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x18;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x8;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0xA;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x2;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x3;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x1;
+		for(i = 1; i<4000; i++);
+}
+
+void TopLeftMotor(void)	{
+		int i;
+		GPIOB->ODR = 0x80;		//select 4
+
+		GPIOA->ODR = 0x11;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x10;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x18;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x8;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0xA;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x2;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x3;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x1;
+		for(i = 1; i<4000; i++);
+}
+
+void BottomLeftMotor(void)	{
+		int i;
+		GPIOB->ODR = 0xA0;	//select 5
+
+		GPIOA->ODR = 0x11;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x10;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x18;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x8;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0xA;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x2;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x3;
+		for(i = 1; i<4000; i++);
+
+		GPIOA->ODR = 0x1;
+		for(i = 1; i<4000; i++);
+}
+
+
+
 void FrontRight(void) {
-	
+
 int red1 = red[0][0];
 int red2 = red[0][1];
 int red3 = red[0][2];
@@ -482,7 +479,7 @@ int red6 = red[1][2];
 int red7 = red[2][0];
 int red8 = red[2][1];
 int red9 = red[2][2];
-	
+
 	red[0][0] = red7;
 	red[0][1] = red4;
 	red[0][2] = red1;
@@ -492,33 +489,50 @@ int red9 = red[2][2];
 	red[2][0] = red9;
 	red[2][1] = red6;
 	red[2][2] = red3;
-	
+
 int	yprevious1 = yellow[0][2];
 int	yprevious2 = yellow[1][2];
 int	yprevious3 = yellow[2][2];
-	
+
 	yellow[0][2] = blue[0][0];
 	yellow[1][2] = blue[0][1];
 	yellow[2][2] = blue[0][2];
-	
+
 	blue[0][0] = white[2][0];
 	blue[0][1] = white[1][0];
 	blue[0][2] = white[0][0];
-	
+
 	white[0][0] = green[2][0];
 	white[1][0] = green[2][1];
 	white[2][0] = green[2][2];
-	
+
 	green[2][0] = yprevious3;
 	green[2][1] = yprevious2;
 	green[2][2] = yprevious1;
-	
-	Moves[m] = 1;
-	m = m + 1;
+
+	if(Front == 1)
+	{
+		Moves[m] = 1;
+		m = m + 1;
+		Front = 1;
+	}
+	else if(Front == 2)
+	{
+		Moves[m] = 13;
+		m = m + 1;
+		Front = 1;
+	}
+	else
+	{
+		Moves[m] = 25;
+		m = m + 1;
+		Front = 1;
+	}
+
 }
 
 void BackLeft(void) {
-	
+
 int orange1 = orange[0][0];
 int orange2 = orange[0][1];
 int orange3 = orange[0][2];
@@ -528,7 +542,7 @@ int orange6 = orange[1][2];
 int orange7 = orange[2][0];
 int orange8 = orange[2][1];
 int orange9 = orange[2][2];
-	
+
 	orange[0][0] = orange7;
 	orange[0][1] = orange4;
 	orange[0][2] = orange1;
@@ -542,29 +556,45 @@ int orange9 = orange[2][2];
 int	wprevious1 = white[0][2];
 int	wprevious2 = white[1][2];
 int	wprevious3 = white[2][2];
-	
+
 	white[0][2] = blue[2][2];
 	white[1][2] = blue[2][1];
 	white[2][2] = blue[2][0];
-	
+
 	blue[2][0] = yellow[0][0];
 	blue[2][1] = yellow[1][0];
 	blue[2][2] = yellow[2][0];
-	
+
 	yellow[0][0] = green[0][2];
 	yellow[1][0] = green[0][1];
 	yellow[2][0] = green[0][0];
-	
+
 	green[0][0] = wprevious1;
 	green[0][1] = wprevious2;
 	green[0][2] = wprevious3;
-	
-	Moves[m] = 2;
-	m = m + 1;
+
+	if(Back == 1)
+	{
+		Moves[m] = 2;
+		m = m + 1;
+		Back = 1;
+	}
+	else if(Back == 2)
+	{
+		Moves[m] = 14;
+		m = m + 1;
+		Back = 1;
+	}
+		else
+	{
+		Moves[m] = 26;
+		m = m + 1;
+		Back = 1;
+	}
 }
 
 void RightForward(void) {
-	
+
 int white1 = white[0][0];
 int white2 = white[0][1];
 int white3 = white[0][2];
@@ -574,7 +604,7 @@ int white6 = white[1][2];
 int white7 = white[2][0];
 int white8 = white[2][1];
 int white9 = white[2][2];
-	
+
 	white[0][0] = white7;
 	white[0][1] = white4;
 	white[0][2] = white1;
@@ -584,33 +614,49 @@ int white9 = white[2][2];
 	white[2][0] = white9;
 	white[2][1] = white6;
 	white[2][2] = white3;
-	
+
 int	rprevious1 = red[0][2];
 int	rprevious2 = red[1][2];
 int	rprevious3 = red[2][2];
-	
+
 	red[0][2] = blue[0][2];
 	red[1][2] = blue[1][2];
 	red[2][2] = blue[2][2];
-	
+
 	blue[0][2] = orange[2][0];
 	blue[1][2] = orange[1][0];
 	blue[2][2] = orange[0][0];
-	
+
 	orange[0][0] = green[2][2];
 	orange[1][0] = green[1][2];
 	orange[2][0] = green[0][2];
-	
+
 	green[0][2] = rprevious1;
 	green[1][2] = rprevious2;
 	green[2][2] = rprevious3;
-	
-	Moves[m] = 3;
-	m = m + 1;
+
+	if(Right == 1)
+	{
+		Moves[m] = 3;
+		m = m + 1;
+		Right = 1;
+	}
+	else if(Right == 2)
+	{
+		Moves[m] = 15;
+		m = m + 1;
+		Right = 1;
+	}
+	else
+	{
+		Moves[m] = 27;
+		m = m + 1;
+		Right = 1;
+	}
 }
 
 void LeftBackward(void) {
-	
+
 int yellow1 = yellow[0][0];
 int yellow2 = yellow[0][1];
 int yellow3 = yellow[0][2];
@@ -620,7 +666,7 @@ int yellow6 = yellow[1][2];
 int yellow7 = yellow[2][0];
 int yellow8 = yellow[2][1];
 int yellow9 = yellow[2][2];
-	
+
 	yellow[0][0] = yellow7;
 	yellow[0][1] = yellow4;
 	yellow[0][2] = yellow1;
@@ -630,33 +676,49 @@ int yellow9 = yellow[2][2];
 	yellow[2][0] = yellow9;
 	yellow[2][1] = yellow6;
 	yellow[2][2] = yellow3;
-	
+
 int	oprevious1 = orange[0][2];
 int	oprevious2 = orange[1][2];
 int	oprevious3 = orange[2][2];
-	
+
 	orange[0][2] = blue[2][0];
 	orange[1][2] = blue[1][0];
 	orange[2][2] = blue[0][0];
-	
+
 	blue[0][0] = red[0][0];
 	blue[1][0] = red[1][0];
 	blue[2][0] = red[2][0];
-	
+
 	red[0][0] = green[0][0];
 	red[1][0] = green[1][0];
 	red[2][0] = green[2][0];
-	
+
 	green[0][0] = oprevious3;
 	green[1][0] = oprevious2;
 	green[2][0] = oprevious1;
-	
-	Moves[m] = 4;
-	m = m + 1;
+
+	if(Left == 1)
+	{
+		Moves[m] = 4;
+		m = m + 1;
+		Left = 1;
+	}
+	else if(Left == 2)
+	{
+		Moves[m] = 16;
+		m = m + 1;
+		Left = 1;
+	}
+	else
+	{
+		Moves[m] = 28;
+		m = m + 1;
+		Left = 1;
+	}
 }
 
 void TopRight(void) {
-	
+
 int green1 = green[0][0];
 int green2 = green[0][1];
 int green3 = green[0][2];
@@ -666,7 +728,7 @@ int green6 = green[1][2];
 int green7 = green[2][0];
 int green8 = green[2][1];
 int green9 = green[2][2];
-	
+
 	green[0][0] = green7;
 	green[0][1] = green4;
 	green[0][2] = green1;
@@ -680,29 +742,45 @@ int green9 = green[2][2];
 int	yprevious1 = yellow[0][0];
 int	yprevious2 = yellow[0][1];
 int	yprevious3 = yellow[0][2];
-	
+
 	yellow[0][0] = red[0][0];
 	yellow[0][1] = red[0][1];
 	yellow[0][2] = red[0][2];
-	
+
 	red[0][0] = white[0][0];
 	red[0][1] = white[0][1];
 	red[0][2] = white[0][2];
-	
+
 	white[0][0] = orange[0][0];
 	white[0][1] = orange[0][1];
 	white[0][2] = orange[0][2];
-	
+
 	orange[0][0] = yprevious1;
 	orange[0][1] = yprevious2;
 	orange[0][2] = yprevious3;
-	
-	Moves[m] = 5;
-	m = m + 1;
+
+	if(Top == 1)
+	{
+		Moves[m] = 5;
+		m = m + 1;
+		Top = 1;
+	}
+	else if(Top == 2)
+	{
+		Moves[m] = 17;
+		m = m + 1;
+		Top = 1;
+	}
+	else
+	{
+		Moves[m] = 29;
+		m = m + 1;
+		Top = 1;
+	}
 }
 
 void BottomRight(void) {
-	
+
 int blue1 = blue[0][0];
 int blue2 = blue[0][1];
 int blue3 = blue[0][2];
@@ -712,7 +790,7 @@ int blue6 = blue[1][2];
 int blue7 = blue[2][0];
 int blue8 = blue[2][1];
 int blue9 = blue[2][2];
-	
+
 	blue[0][0] = blue7;
 	blue[0][1] = blue4;
 	blue[0][2] = blue1;
@@ -722,33 +800,49 @@ int blue9 = blue[2][2];
 	blue[2][0] = blue9;
 	blue[2][1] = blue6;
 	blue[2][2] = blue3;
-	
+
 int	yprevious1 = yellow[2][0];
 int	yprevious2 = yellow[2][1];
 int	yprevious3 = yellow[2][2];
-	
+
 	yellow[2][0] = orange[2][0];
 	yellow[2][1] = orange[2][1];
 	yellow[2][2] = orange[2][2];
-	
+
 	orange[2][0] = white[2][0];
 	orange[2][1] = white[2][1];
 	orange[2][2] = white[2][2];
-	
+
 	white[2][0] = red[2][0];
 	white[2][1] = red[2][1];
 	white[2][2] = red[2][2];
-	
+
 	red[2][0] = yprevious1;
 	red[2][1] = yprevious2;
 	red[2][2] = yprevious3;
-	
-	Moves[m] = 6;
-	m = m + 1;
+
+	if(Bottom == 1)
+	{
+		Moves[m] = 6;
+		m = m + 1;
+		Bottom = 1;
+	}
+	else if(Bottom == 2)
+	{
+		Moves[m] = 18;
+		m = m + 1;
+		Bottom = 1;
+	}
+	else
+	{
+		Moves[m] = 30;
+		m = m + 1;
+		Bottom = 1;
+	}
 }
 
 void FrontLeft(void) {
-	
+
 int red1 = red[0][0];
 int red2 = red[0][1];
 int red3 = red[0][2];
@@ -758,7 +852,7 @@ int red6 = red[1][2];
 int red7 = red[2][0];
 int red8 = red[2][1];
 int red9 = red[2][2];
-	
+
 	red[0][0] = red3;
 	red[0][1] = red6;
 	red[0][2] = red9;
@@ -772,29 +866,45 @@ int red9 = red[2][2];
 int	yprevious1 = yellow[0][2];
 int	yprevious2 = yellow[1][2];
 int	yprevious3 = yellow[2][2];
-	
+
 	yellow[0][2] = green[2][2];
 	yellow[1][2] = green[2][1];
 	yellow[2][2] = green[2][0];
-	
+
 	green[2][0] = white[0][0];
 	green[2][1] = white[1][0];
 	green[2][2] = white[2][0];
-	
+
 	white[0][0] = blue[0][2];
 	white[1][0] = blue[0][1];
 	white[2][0] = blue[0][0];
-	
+
 	blue[0][2] = yprevious3;
 	blue[0][1] = yprevious2;
 	blue[0][0] = yprevious1;
-	
-	Moves[m] = 7;
-	m = m + 1;
+
+	if(Front == 2)
+	{
+		Moves[m] = 7;
+		m = m + 1;
+		Front = 2;
+	}
+	else if(Front == 1)
+	{
+		Moves[m] = 19;
+		m = m + 1;
+		Front = 2;
+	}
+	else
+	{
+		Moves[m] = 31;
+		m = m + 1;
+		Front = 2;
+	}
 }
 
 void BackRight(void) {
-	
+
 int orange1 = orange[0][0];
 int orange2 = orange[0][1];
 int orange3 = orange[0][2];
@@ -804,7 +914,7 @@ int orange6 = orange[1][2];
 int orange7 = orange[2][0];
 int orange8 = orange[2][1];
 int orange9 = orange[2][2];
-	
+
 	orange[0][0] = orange3;
 	orange[0][1] = orange6;
 	orange[0][2] = orange9;
@@ -819,29 +929,45 @@ int orange9 = orange[2][2];
 int	wprevious1 = white[0][2];
 int	wprevious2 = white[1][2];
 int	wprevious3 = white[2][2];
-	
+
 	white[0][2] = green[0][0];
 	white[1][2] = green[0][1];
 	white[2][2] = green[0][2];
-	
+
 	green[0][0] = yellow[2][0];
 	green[0][1] = yellow[1][0];
 	green[0][2] = yellow[0][0];
-	
+
 	yellow[0][0] = blue[2][0];
 	yellow[1][0] = blue[2][1];
 	yellow[2][0] = blue[2][2];
-	
+
 	blue[2][0] = wprevious3;
 	blue[2][1] = wprevious2;
 	blue[2][2] = wprevious1;
-	
-	Moves[m] = 8;
-	m = m + 1;
+
+	if(Back == 2)
+	{
+		Moves[m] = 8;
+		m = m + 1;
+		Back = 2;
+	}
+	else if(Back == 1)
+	{
+		Moves[m] = 20;
+		m = m + 1;
+		Back = 2;
+	}
+	else
+	{
+		Moves[m] = 32;
+		m = m + 1;
+		Back = 2;
+	}
 }
 
 void RightBackward(void) {
-	
+
 int white1 = white[0][0];
 int white2 = white[0][1];
 int white3 = white[0][2];
@@ -851,7 +977,7 @@ int white6 = white[1][2];
 int white7 = white[2][0];
 int white8 = white[2][1];
 int white9 = white[2][2];
-	
+
 	white[0][0] = white3;
 	white[0][1] = white6;
 	white[0][2] = white9;
@@ -861,33 +987,49 @@ int white9 = white[2][2];
 	white[2][0] = white1;
 	white[2][1] = white4;
 	white[2][2] = white7;
-	
+
 int	rprevious1 = red[0][2];
 int	rprevious2 = red[1][2];
 int	rprevious3 = red[2][2];
-	
+
 	red[0][2] = green[0][2];
 	red[1][2] = green[1][2];
 	red[2][2] = green[2][2];
-	
+
 	green[0][2] = orange[2][0];
 	green[1][2] = orange[1][0];
 	green[2][2] = orange[0][0];
-	
+
 	orange[2][0] = blue[0][2];
 	orange[1][0] = blue[1][2];
 	orange[0][0] = blue[2][2];
-	
+
 	blue[0][2] = rprevious1;
 	blue[1][2] = rprevious2;
 	blue[2][2] = rprevious3;
-	
-	Moves[m] = 9;
-	m = m + 1;
+
+	if(Right == 2)
+	{
+		Moves[m] = 9;
+		m = m + 1;
+		Right = 2;
+	}
+	else if(Right == 1)
+	{
+		Moves[m] = 21;
+		m = m + 1;
+		Right = 2;
+	}
+	else
+	{
+		Moves[m] = 33;
+		m = m + 1;
+		Right = 2;
+	}
 }
 
 void LeftForward(void) {
-	
+
 int yellow1 = yellow[0][0];
 int yellow2 = yellow[0][1];
 int yellow3 = yellow[0][2];
@@ -897,7 +1039,7 @@ int yellow6 = yellow[1][2];
 int yellow7 = yellow[2][0];
 int yellow8 = yellow[2][1];
 int yellow9 = yellow[2][2];
-	
+
 	yellow[0][0] = yellow3;
 	yellow[0][1] = yellow6;
 	yellow[0][2] = yellow9;
@@ -911,29 +1053,45 @@ int yellow9 = yellow[2][2];
 int	oprevious1 = orange[0][2];
 int	oprevious2 = orange[1][2];
 int	oprevious3 = orange[2][2];
-	
+
 	orange[0][2] = green[2][0];
 	orange[1][2] = green[1][0];
 	orange[2][2] = green[0][0];
-	
+
 	green[2][0] = red[2][0];
 	green[1][0] = red[1][0];
 	green[0][0] = red[0][0];
-	
+
 	red[2][0] = blue[2][0];
 	red[1][0] = blue[1][0];
 	red[0][0] = blue[0][0];
-	
+
 	blue[2][0] = oprevious1;
 	blue[1][0] = oprevious2;
 	blue[0][0] = oprevious3;
-	
-	Moves[m] = 10;
-	m = m + 1;
+
+	if(Left == 2)
+	{
+		Moves[m] = 10;
+		m = m + 1;
+		Left = 2;
+	}
+	else if(Left == 1)
+	{
+		Moves[m] = 22;
+		m = m + 1;
+		Left = 2;
+	}
+	else
+	{
+		Moves[m] = 34;
+		m = m + 1;
+		Left = 2;
+	}
 }
 
 void TopLeft(void) {
-	
+
 int green1 = green[0][0];
 int green2 = green[0][1];
 int green3 = green[0][2];
@@ -943,7 +1101,7 @@ int green6 = green[1][2];
 int green7 = green[2][0];
 int green8 = green[2][1];
 int green9 = green[2][2];
-	
+
 	green[0][0] = green3;
 	green[0][1] = green6;
 	green[0][2] = green9;
@@ -954,33 +1112,49 @@ int green9 = green[2][2];
 	green[2][1] = green4;
 	green[2][2] = green7;
 
-	
+
 int	yprevious1 = yellow[0][0];
 int	yprevious2 = yellow[0][1];
 int	yprevious3 = yellow[0][2];
-	
+
 	yellow[0][0] = orange[0][0];
 	yellow[0][1] = orange[0][1];
 	yellow[0][2] = orange[0][2];
-	
+
 	orange[0][0] = white[0][0];
 	orange[0][1] = white[0][1];
 	orange[0][2] = white[0][2];
-	
+
 	white[0][0] = red[0][0];
 	white[0][1] = red[0][1];
 	white[0][2] = red[0][2];
-	
+
 	red[0][0] = yprevious1;
 	red[0][1] = yprevious2;
 	red[0][2] = yprevious3;
-	
-	Moves[m] = 11;
-	m = m + 1;
+
+	if(Top == 2)
+	{
+		Moves[m] = 11;
+		m = m + 1;
+		Top = 2;
+	}
+	else if(Top == 1)
+	{
+		Moves[m] = 23;
+		m = m + 1;
+		Top = 2;
+	}
+	else
+	{
+		Moves[m] = 35;
+		m = m + 1;
+		Top = 2;
+	}
 }
 
 void BottomLeft(void) {
-	
+
 int blue1 = blue[0][0];
 int blue2 = blue[0][1];
 int blue3 = blue[0][2];
@@ -990,7 +1164,7 @@ int blue6 = blue[1][2];
 int blue7 = blue[2][0];
 int blue8 = blue[2][1];
 int blue9 = blue[2][2];
-	
+
 	blue[0][0] = blue3;
 	blue[0][1] = blue6;
 	blue[0][2] = blue9;
@@ -1000,29 +1174,45 @@ int blue9 = blue[2][2];
 	blue[2][0] = blue1;
 	blue[2][1] = blue4;
 	blue[2][2] = blue7;
-	
+
 int	yprevious1 = yellow[2][0];
 int	yprevious2 = yellow[2][1];
 int	yprevious3 = yellow[2][2];
-	
+
 	yellow[2][0] = red[2][0];
 	yellow[2][1] = red[2][1];
 	yellow[2][2] = red[2][2];
-	
+
 	red[2][0] = white[2][0];
 	red[2][1] = white[2][1];
 	red[2][2] = white[2][2];
-	
+
 	white[2][0] = orange[2][0];
 	white[2][1] = orange[2][1];
 	white[2][2] = orange[2][2];
-	
+
 	orange[2][0] = yprevious1;
 	orange[2][1] = yprevious2;
 	orange[2][2] = yprevious3;
-	
-	Moves[m] = 12;
-	m = m + 1;
+
+	if(Bottom == 2)
+	{
+		Moves[m] = 12;
+		m = m + 1;
+		Bottom = 2;
+	}
+	else if(Bottom == 1)
+	{
+		Moves[m] = 24;
+		m = m + 1;
+		Bottom = 2;
+	}
+	else
+	{
+		Moves[m] = 36;
+		m = m + 1;
+		Bottom = 2;
+	}
 }
 
 void RightAlg(void) {
@@ -1034,7 +1224,7 @@ void RightAlg(void) {
 }
 
 void LeftAlg(void) {
-	
+
 	LeftForward();
 	TopLeft();
 	LeftBackward();
@@ -1042,16 +1232,16 @@ void LeftAlg(void) {
 }
 
 void WhiteCross(void) {
-	
+
 	while ((white[0][1] != 3) || (green[1][2] != 5) || (white[1][0] != 3) || (red[1][2] != 6) || (white[2][1] != 3) || (blue[1][2] != 4) || (white[1][2] != 3) || (orange[1][0] != 1))
 	{
-		
+
 		while ((yellow[0][1] != 3) || (green[1][0] != 5) || (yellow[1][0] != 3) || (orange[1][2] != 1) || (yellow[2][1] != 3) || (blue[1][0] != 4) || (yellow[1][2] != 3) || (red[1][0] != 6))  //Forming the Daisy
 		{
 			while(green[1][0] != 5 || yellow[0][1] != 3) //green's side
 			{
 				//top layer (close to yellow)
-				if(red[1][0] == 5 && yellow[1][2] == 3)  
+				if(red[1][0] == 5 && yellow[1][2] == 3)
 				{
 					FrontRight();
 					FrontRight();
@@ -1075,7 +1265,7 @@ void WhiteCross(void) {
 					RightBackward();
 					TopLeft();
 					TopLeft();
-				}//------------------------------------------  
+				}//------------------------------------------
 				//top layer edge inverted
 				if(green[1][0] == 3 && yellow[0][1] == 5)
 				{
@@ -1754,7 +1944,7 @@ void WhiteCross(void) {
 }
 
 void WhiteCorners(void) {
-	
+
 	while((red[0][2] != 6 || green[2][2] != 5 || white[0][0] != 3) || (green[0][2] != 5 || orange[0][0] != 1 || white[0][2] != 3) || (orange[2][0] != 1 || blue[2][2] != 4 || white[2][2] != 3) || (blue[0][2] != 4 || red[2][2] != 6 || white[2][0] != 3))
 	{
 		//RED GREEN corner
@@ -1772,7 +1962,7 @@ void WhiteCorners(void) {
 		if((red[2][0] == 5 && yellow[2][2] == 6 && blue[0][0] == 3) || (red[2][0] == 3 && yellow[2][2] == 5 && blue[0][0] == 6) || (red[2][0] == 6 && yellow[2][2] == 3 && blue[0][0] == 5))
 		{
 			LeftForward();
-			
+
 			while(red[0][2] != 6 || green[2][2] != 5 || white[0][0] != 3)
 			{
 				TopRight();
@@ -1785,7 +1975,7 @@ void WhiteCorners(void) {
 		{
 			LeftForward();
 			LeftForward();
-			
+
 			while(red[0][2] != 6 || green[2][2] != 5 || white[0][0] != 3)
 			{
 				TopRight();
@@ -1797,7 +1987,7 @@ void WhiteCorners(void) {
 		if((green[0][0] == 6 && orange[0][2] == 3 && yellow[0][0] == 5) || (green[0][0] == 3 && orange[0][2] == 5 && yellow[0][0] == 6) || (green[0][0] == 5 && orange[0][2] == 6 && yellow[0][0] == 3))
 		{
 			LeftBackward();
-			
+
 			while(red[0][2] != 6 || green[2][2] != 5 || white[0][0] != 3)
 			{
 				TopRight();
@@ -1825,7 +2015,7 @@ void WhiteCorners(void) {
 			FrontLeft();
 			LeftForward();
 			LeftForward();
-			
+
 			while(red[0][2] != 6 || green[2][2] != 5 || white[0][0] != 3)
 			{
 				TopRight();
@@ -1840,7 +2030,7 @@ void WhiteCorners(void) {
 			LeftBackward();
 			BottomLeft();
 			LeftBackward();
-			
+
 			while(red[0][2] != 6 || green[2][2] != 5 || white[0][0] != 3)
 			{
 				TopRight();
@@ -1854,7 +2044,7 @@ void WhiteCorners(void) {
 			BackLeft();
 			LeftBackward();
 			BackRight();
-			
+
 			while(red[0][2] != 6 || green[2][2] != 5 || white[0][0] != 3)
 			{
 				TopRight();
@@ -1879,7 +2069,7 @@ void WhiteCorners(void) {
 		if((red[0][0] == 3 && yellow[0][2] == 5 && green[2][0] == 1) || (red[0][0] == 5 && yellow[0][2] == 1 && green[2][0] == 3) || (red[0][0] == 1 && yellow[0][2] == 3 && green[2][0] == 5))
 		{
 			LeftForward();
-			
+
 			while(green[0][2] != 5 || white[0][2] != 3 || orange[0][0] != 1)
 			{
 				BackLeft();
@@ -1892,7 +2082,7 @@ void WhiteCorners(void) {
 		{
 			LeftForward();
 			LeftForward();
-			
+
 			while(green[0][2] != 5 || white[0][2] != 3 || orange [0][0] != 1)
 			{
 				BackLeft();
@@ -1904,7 +2094,7 @@ void WhiteCorners(void) {
 		if((blue[2][0] == 1 && yellow[2][0] == 5 && orange[2][2] == 3) || (blue[2][0] == 3 && yellow[2][0] == 1 && orange[2][2] == 5) || (blue[2][0] == 5 && yellow[2][0] == 3 && orange[2][2] == 1))
 		{
 			LeftBackward();
-			
+
 			while(green[0][2] != 5 || white[0][2] != 3 || orange[0][0] != 1)
 			{
 				BackLeft();
@@ -1932,7 +2122,7 @@ void WhiteCorners(void) {
 			TopLeft();
 			LeftForward();
 			LeftForward();
-			
+
 			while(green[0][2] != 5 || white[0][2] != 3 || orange[0][0] != 1)
 			{
 				BackLeft();
@@ -1947,7 +2137,7 @@ void WhiteCorners(void) {
 			LeftBackward();
 			FrontLeft();
 			LeftBackward();
-			
+
 			while(green[0][2] != 5 || white[0][2] != 3 || orange[0][0] != 1)
 			{
 				BackLeft();
@@ -1961,7 +2151,7 @@ void WhiteCorners(void) {
 			BottomRight();
 			LeftBackward();
 			BottomLeft();
-			
+
 			while(green[0][2] != 5 || white[0][2] != 3 || orange[0][0] != 1)
 			{
 				BackLeft();
@@ -1986,7 +2176,7 @@ void WhiteCorners(void) {
 		if((green[0][0] == 4 && yellow[0][0] == 3 && orange[0][2] == 1) || (green[0][0] == 3 && yellow[0][0] == 1 && orange[0][2] == 4) || (green[0][0] == 1 && yellow[0][0] == 4 && orange[0][2] == 3))
 		{
 			LeftForward();
-			
+
 			while(blue[2][2] != 4 || white[2][2] != 3 || orange[2][0] != 1)
 			{
 				BottomRight();
@@ -1999,7 +2189,7 @@ void WhiteCorners(void) {
 		{
 			LeftForward();
 			LeftForward();
-			
+
 			while(blue[2][2] != 4 || white[2][2] != 3 || orange[2][0] != 1)
 			{
 				BottomRight();
@@ -2011,7 +2201,7 @@ void WhiteCorners(void) {
 		if((red[2][0] == 1 && yellow[2][2] == 3 && blue[0][0] == 4) || (red[2][0] == 4 && yellow[2][2] == 1 && blue[0][0] == 3) || (red[2][0] == 3 && yellow[2][2] == 4 && blue[0][0] == 1))
 		{
 			LeftBackward();
-			
+
 			while(blue[2][2] != 4 || white[2][2] != 3 || orange[2][0] != 1)
 			{
 				BottomRight();
@@ -2037,7 +2227,7 @@ void WhiteCorners(void) {
 			FrontRight();
 			LeftBackward();
 			FrontLeft();
-			
+
 			while(blue[2][2] != 4 || white[2][2] != 3 || orange[2][0] != 1)
 			{
 				BottomRight();
@@ -2052,7 +2242,7 @@ void WhiteCorners(void) {
 			LeftBackward();
 			TopLeft();
 			LeftBackward();
-			
+
 			while(blue[2][2] != 4 || white[2][2] != 3 || orange[2][0] != 1)
 			{
 				BottomRight();
@@ -2068,7 +2258,7 @@ void WhiteCorners(void) {
 			BackRight();
 			LeftForward();
 			LeftForward();
-			
+
 			while(blue[2][2] != 4 || white[2][2] != 3 || orange[2][0] != 1)
 			{
 				BottomRight();
@@ -2089,11 +2279,11 @@ void WhiteCorners(void) {
 				FrontLeft();
 				LeftForward();
 			}
-		} 
+		}
 		if((green[2][0] == 6 && yellow[0][2] == 4 && red[0][0] == 3) || (green[2][0] == 3 && yellow[0][2] == 6 && red[0][0] == 4) || (green[2][0] == 4 && yellow[0][2] == 3 && red[0][0] == 6))
 		{
 			LeftBackward();
-			
+
 			while(red[2][2] != 6 || white[2][0] != 3 || blue[0][2] !=  4)
 			{
 				FrontRight();
@@ -2106,7 +2296,7 @@ void WhiteCorners(void) {
 		{
 			LeftBackward();
 			LeftBackward();
-			
+
 			while(red[2][2] != 6 || white[2][0] != 3 || blue[0][2] !=  4)
 			{
 				FrontRight();
@@ -2118,7 +2308,7 @@ void WhiteCorners(void) {
 		if((blue[2][0] == 6 && yellow[2][0] == 4 && orange[2][2] == 3) || (blue[2][0] == 3 && yellow[2][0] == 6 && orange[2][2] == 4) || (blue[2][0] == 4 && yellow[2][0] == 3 && orange[2][2] == 6))
 		{
 			LeftForward();
-			
+
 			while(red[2][2] != 6 || white[2][0] != 3 || blue[0][2] !=  4)
 			{
 				FrontRight();
@@ -2146,7 +2336,7 @@ void WhiteCorners(void) {
 			BottomLeft();
 			LeftForward();
 			LeftForward();
-			
+
 			while(red[2][2] != 6 || white[2][0] != 3 || blue[0][2] !=  4)
 			{
 				FrontRight();
@@ -2161,7 +2351,7 @@ void WhiteCorners(void) {
 			LeftBackward();
 			BackRight();
 			LeftBackward();
-			
+
 			while(red[2][2] != 6 || white[2][0] != 3 || blue[0][2] !=  4)
 			{
 				FrontRight();
@@ -2175,7 +2365,7 @@ void WhiteCorners(void) {
 			TopRight();
 			LeftBackward();
 			TopLeft();
-			
+
 			while(red[2][2] != 6 || white[2][0] != 3 || blue[0][2] !=  4)
 			{
 				FrontRight();
@@ -2188,7 +2378,7 @@ void WhiteCorners(void) {
 }
 
 void MiddleLayer(void) {
-	
+
 	while(red[0][1] != 6 || green[2][1] != 5 || green[0][1] != 5 || orange[0][1] != 1 || orange[2][1] != 1 || blue[2][1] != 4 || blue[0][1] != 4 || red[2][1] != 6)
 	{
 		//GREEN RED edge
@@ -2196,7 +2386,7 @@ void MiddleLayer(void) {
 		if(red[1][0] == 6 && yellow[1][2] == 5)
 		{
 			LeftBackward();
-			
+
 			TopRight();
 			LeftBackward();
 			TopLeft();
@@ -2209,7 +2399,7 @@ void MiddleLayer(void) {
 		{
 			LeftBackward();
 			LeftBackward();
-			
+
 			TopRight();
 			LeftBackward();
 			TopLeft();
@@ -2221,7 +2411,7 @@ void MiddleLayer(void) {
 		if(orange[1][2] == 6 && yellow[1][0] == 5)
 		{
 			LeftForward();
-			
+
 			TopRight();
 			LeftBackward();
 			TopLeft();
@@ -2246,7 +2436,7 @@ void MiddleLayer(void) {
 		{
 			LeftForward();
 			LeftForward();
-			
+
 			FrontLeft();
 			LeftForward();
 			FrontRight();
@@ -2258,7 +2448,7 @@ void MiddleLayer(void) {
 		if(green[1][0] == 5 && yellow[0][1] == 6)
 		{
 			LeftForward();
-			
+
 			FrontLeft();
 			LeftForward();
 			FrontRight();
@@ -2280,7 +2470,7 @@ void MiddleLayer(void) {
 		if(blue[1][0] == 5 && yellow[2][1] == 6)
 		{
 			LeftBackward();
-			
+
 			FrontLeft();
 			LeftForward();
 			FrontRight();
@@ -2301,7 +2491,7 @@ void MiddleLayer(void) {
 			LeftForward();
 			TopRight();
 			LeftBackward();
-			
+
 			FrontLeft();
 			LeftForward();
 			FrontRight();
@@ -2321,7 +2511,7 @@ void MiddleLayer(void) {
 			BackLeft();
 			LeftBackward();
 			LeftBackward();
-			
+
 			FrontLeft();
 			LeftForward();
 			FrontRight();
@@ -2340,7 +2530,7 @@ void MiddleLayer(void) {
 			LeftBackward();
 			FrontLeft();
 			LeftForward();
-			
+
 			TopRight();
 			LeftBackward();
 			TopLeft();
@@ -2361,7 +2551,7 @@ void MiddleLayer(void) {
 			LeftForward();
 			FrontRight();
 			LeftForward();
-			
+
 			TopRight();
 			LeftBackward();
 			TopLeft();
@@ -2379,7 +2569,7 @@ void MiddleLayer(void) {
 			TopLeft();
 			LeftForward();
 			TopRight();
-			
+
 			TopRight();
 			LeftBackward();
 			TopLeft();
@@ -2398,7 +2588,7 @@ void MiddleLayer(void) {
 			LeftForward();
 			BackLeft();
 			LeftBackward();
-			
+
 			TopRight();
 			LeftBackward();
 			TopLeft();
@@ -2418,7 +2608,7 @@ void MiddleLayer(void) {
 			BottomRight();
 			LeftBackward();
 			LeftBackward();
-			
+
 			TopRight();
 			LeftBackward();
 			TopLeft();
@@ -2433,7 +2623,7 @@ void MiddleLayer(void) {
 		if(green[1][0] == 5 && yellow[0][1] == 1)
 		{
 			LeftBackward();
-			
+
 			BackLeft();
 			LeftBackward();
 			BackRight();
@@ -2446,7 +2636,7 @@ void MiddleLayer(void) {
 		{
 			LeftBackward();
 			LeftBackward();
-			
+
 			BackLeft();
 			LeftBackward();
 			BackRight();
@@ -2458,7 +2648,7 @@ void MiddleLayer(void) {
 		if(blue[1][0] == 5 && yellow[2][1] == 1)
 		{
 			LeftForward();
-			
+
 			BackLeft();
 			LeftBackward();
 			BackRight();
@@ -2483,7 +2673,7 @@ void MiddleLayer(void) {
 		{
 			LeftForward();
 			LeftForward();
-			
+
 			TopLeft();
 			LeftForward();
 			TopRight();
@@ -2495,7 +2685,7 @@ void MiddleLayer(void) {
 		if(orange[1][2] == 1 && yellow[1][0] == 5)
 		{
 			LeftForward();
-			
+
 			TopLeft();
 			LeftForward();
 			TopRight();
@@ -2517,7 +2707,7 @@ void MiddleLayer(void) {
 		if(red[1][0] == 1 && yellow[1][2] == 5)
 		{
 			LeftBackward();
-			
+
 			TopLeft();
 			LeftForward();
 			TopRight();
@@ -2538,7 +2728,7 @@ void MiddleLayer(void) {
 			LeftForward();
 			BackLeft();
 			LeftBackward();
-			
+
 			TopLeft();
 			LeftForward();
 			TopRight();
@@ -2558,7 +2748,7 @@ void MiddleLayer(void) {
 			BottomRight();
 			LeftBackward();
 			LeftBackward();
-			
+
 			TopLeft();
 			LeftForward();
 			TopRight();
@@ -2577,7 +2767,7 @@ void MiddleLayer(void) {
 			LeftForward();
 			FrontRight();
 			LeftForward();
-			
+
 			TopLeft();
 			LeftForward();
 			TopRight();
@@ -2598,7 +2788,7 @@ void MiddleLayer(void) {
 			LeftForward();
 			TopRight();
 			LeftForward();
-			
+
 			BackLeft();
 			LeftBackward();
 			BackRight();
@@ -2616,7 +2806,7 @@ void MiddleLayer(void) {
 			BackRight();
 			LeftForward();
 			BackLeft();
-			
+
 			BackLeft();
 			LeftBackward();
 			BackRight();
@@ -2635,7 +2825,7 @@ void MiddleLayer(void) {
 			LeftForward();
 			BottomRight();
 			LeftBackward();
-			
+
 			BackLeft();
 			LeftBackward();
 			BackRight();
@@ -2655,7 +2845,7 @@ void MiddleLayer(void) {
 			FrontRight();
 			LeftBackward();
 			LeftBackward();
-			
+
 			BackLeft();
 			LeftBackward();
 			BackRight();
@@ -2670,7 +2860,7 @@ void MiddleLayer(void) {
 		if(red[1][0] == 1 && yellow[1][2] == 4)
 		{
 			LeftForward();
-			
+
 			BottomRight();
 			LeftBackward();
 			BottomLeft();
@@ -2703,7 +2893,7 @@ void MiddleLayer(void) {
 		{
 			LeftForward();
 			LeftForward();
-			
+
 			BottomRight();
 			LeftBackward();
 			BottomLeft();
@@ -2727,7 +2917,7 @@ void MiddleLayer(void) {
 		if(green[1][0] == 4 && yellow[0][1] == 1)
 		{
 			LeftBackward();
-			
+
 			BackRight();
 			LeftForward();
 			BackLeft();
@@ -2740,7 +2930,7 @@ void MiddleLayer(void) {
 		{
 			LeftBackward();
 			LeftBackward();
-			
+
 			BackRight();
 			LeftForward();
 			BackLeft();
@@ -2752,7 +2942,7 @@ void MiddleLayer(void) {
 		if(blue[1][0] == 4 && yellow[2][1] == 1)
 		{
 			LeftForward();
-			
+
 			BackRight();
 			LeftForward();
 			BackLeft();
@@ -2773,7 +2963,7 @@ void MiddleLayer(void) {
 			LeftForward();
 			BottomRight();
 			LeftBackward();
-			
+
 			BackRight();
 			LeftForward();
 			BackLeft();
@@ -2793,7 +2983,7 @@ void MiddleLayer(void) {
 			FrontRight();
 			LeftBackward();
 			LeftBackward();
-			
+
 			BackRight();
 			LeftForward();
 			BackLeft();
@@ -2812,7 +3002,7 @@ void MiddleLayer(void) {
 			LeftForward();
 			TopRight();
 			LeftForward();
-			
+
 			BackRight();
 			LeftForward();
 			BackLeft();
@@ -2833,7 +3023,7 @@ void MiddleLayer(void) {
 			LeftForward();
 			BackLeft();
 			LeftForward();
-			
+
 			BottomRight();
 			LeftBackward();
 			BottomLeft();
@@ -2851,7 +3041,7 @@ void MiddleLayer(void) {
 			BottomLeft();
 			LeftForward();
 			BottomRight();
-			
+
 			BottomRight();
 			LeftBackward();
 			BottomLeft();
@@ -2870,7 +3060,7 @@ void MiddleLayer(void) {
 			LeftForward();
 			FrontRight();
 			LeftBackward();
-			
+
 			BottomRight();
 			LeftBackward();
 			BottomLeft();
@@ -2890,7 +3080,7 @@ void MiddleLayer(void) {
 			TopRight();
 			LeftBackward();
 			LeftBackward();
-			
+
 			BottomRight();
 			LeftBackward();
 			BottomLeft();
@@ -2905,7 +3095,7 @@ void MiddleLayer(void) {
 		if(red[1][0] == 6 && yellow[1][2] == 4)
 		{
 			LeftForward();
-			
+
 			BottomLeft();
 			LeftForward();
 			BottomRight();
@@ -2927,7 +3117,7 @@ void MiddleLayer(void) {
 		if(orange[1][2] == 6 && yellow[1][0] == 4)
 		{
 			LeftBackward();
-			
+
 			BottomLeft();
 			LeftForward();
 			BottomRight();
@@ -2940,7 +3130,7 @@ void MiddleLayer(void) {
 		{
 			LeftForward();
 			LeftForward();
-			
+
 			BottomLeft();
 			LeftForward();
 			BottomRight();
@@ -2955,7 +3145,7 @@ void MiddleLayer(void) {
 		{
 			LeftBackward();
 			LeftBackward();
-			
+
 			FrontRight();
 			LeftBackward();
 			FrontLeft();
@@ -2967,7 +3157,7 @@ void MiddleLayer(void) {
 		if(green[1][0] == 4 && yellow[0][1] == 6)
 		{
 			LeftForward();
-			
+
 			FrontRight();
 			LeftBackward();
 			FrontLeft();
@@ -2989,7 +3179,7 @@ void MiddleLayer(void) {
 		if(blue[1][0] == 4 && yellow[2][1] == 6)
 		{
 			LeftBackward();
-			
+
 			FrontRight();
 			LeftBackward();
 			FrontLeft();
@@ -3010,7 +3200,7 @@ void MiddleLayer(void) {
 			LeftForward();
 			FrontRight();
 			LeftBackward();
-			
+
 			BottomLeft();
 			LeftForward();
 			BottomRight();
@@ -3030,7 +3220,7 @@ void MiddleLayer(void) {
 			TopRight();
 			LeftBackward();
 			LeftBackward();
-			
+
 			BottomLeft();
 			LeftForward();
 			BottomRight();
@@ -3049,7 +3239,7 @@ void MiddleLayer(void) {
 			LeftForward();
 			BackLeft();
 			LeftForward();
-			
+
 			BottomLeft();
 			LeftForward();
 			BottomRight();
@@ -3070,7 +3260,7 @@ void MiddleLayer(void) {
 			LeftForward();
 			BottomRight();
 			LeftForward();
-			
+
 			FrontRight();
 			LeftBackward();
 			FrontLeft();
@@ -3088,7 +3278,7 @@ void MiddleLayer(void) {
 			FrontLeft();
 			LeftForward();
 			FrontRight();
-			
+
 			FrontRight();
 			LeftBackward();
 			FrontLeft();
@@ -3107,7 +3297,7 @@ void MiddleLayer(void) {
 			LeftForward();
 			TopRight();
 			LeftBackward();
-			
+
 			FrontRight();
 			LeftBackward();
 			FrontLeft();
@@ -3127,7 +3317,7 @@ void MiddleLayer(void) {
 			BackLeft();
 			LeftBackward();
 			LeftBackward();
-			
+
 			FrontRight();
 			LeftBackward();
 			FrontLeft();
@@ -3136,23 +3326,23 @@ void MiddleLayer(void) {
 			LeftForward();
 			BottomRight();
 		}
-	 } 
+	 }
 }
 
 void YellowCross(void) {
-	
+
 	while(yellow[1][0] != 2 || yellow[2][1] != 2 || yellow[1][2] != 2 || yellow[0][1] != 2)
 	{
 		//the dot
 		if(yellow[1][0] != 2 && yellow[2][1] != 2 && yellow[1][2] != 2 && yellow[0][1] != 2)
 		{
 			BottomRight();
-			
+
 			LeftBackward();
 			FrontRight();
 			LeftForward();
 			FrontLeft();
-			
+
 			BottomLeft();
 		}
 		//---------------------------------------------------------------
@@ -3160,45 +3350,45 @@ void YellowCross(void) {
 		if(yellow[1][0] != 2 && yellow[2][1] != 2 && yellow[1][2] == 2 && yellow[0][1] == 2)
 		{
 			BackLeft();
-			
+
 			LeftBackward();
 			BottomRight();
 			LeftForward();
 			BottomLeft();
-			
+
 			BackRight();
 		}
 		if(yellow[1][0] != 2 && yellow[2][1] == 2 && yellow[1][2] == 2 && yellow[0][1] != 2)
 		{
 			TopRight();
-			
+
 			LeftBackward();
 			BackLeft();
 			LeftForward();
 			BackRight();
-			
+
 			TopLeft();
 		}
 		if(yellow[1][0] == 2 && yellow[2][1] == 2 && yellow[1][2] != 2 && yellow[0][1] != 2)
 		{
 			FrontRight();
-			
+
 			LeftBackward();
 			TopRight();
 			LeftForward();
 			TopLeft();
-			
+
 			FrontLeft();
 		}
 		if(yellow[1][0] == 2 && yellow[2][1] != 2 && yellow[1][2] != 2 && yellow[0][1] == 2)
 		{
 			BottomRight();
-			
+
 			LeftBackward();
 			FrontRight();
 			LeftForward();
 			FrontLeft();
-			
+
 			BottomLeft();
 		}
 		//--------------------------------------------------------------
@@ -3206,30 +3396,30 @@ void YellowCross(void) {
 		if(yellow[1][0] == 2 && yellow[2][1] != 2 && yellow[1][2] == 2 && yellow[0][1] != 2)
 		{
 			TopRight();
-			
+
 			BackLeft();
 			LeftBackward();
 			BackRight();
 			LeftForward();
-			
+
 			TopLeft();
 		}
 		if(yellow[1][0] != 2 && yellow[2][1] == 2 && yellow[1][2] != 2 && yellow[0][1] == 2)
 		{
 			FrontRight();
-			
+
 			TopRight();
 			LeftBackward();
 			TopLeft();
 			LeftForward();
-			
+
 			FrontLeft();
 		}
 	}
 }
 
 void OrientYellowCorners(void) {
-	
+
 	//Lining up the RED GREEN corner
 	if((green[0][0] == 5 && yellow[0][0] == 6 && orange[0][2] == 2) || (green[0][0] == 6 && yellow[0][0] == 2 && orange[0][2] == 5) || (green[0][0] == 2 && yellow[0][0] == 5 && orange[0][2] == 6))
 	{
@@ -3257,7 +3447,7 @@ void OrientYellowCorners(void) {
 			TopLeft();
 			LeftForward();
 			BottomRight();
-			
+
 			if((green[0][0] == 4 || yellow[0][0] == 4 || orange[0][2] == 4) && (green[0][0] == 1 || yellow[0][0] == 1 || orange[0][2] == 1) && (orange[2][2] == 5 || yellow[2][0] == 5 || blue[2][0] == 5))
 			{
 				BackLeft();
@@ -3272,7 +3462,7 @@ void OrientYellowCorners(void) {
 				LeftBackward();
 				BackRight();
 				LeftForward();
-				
+
 				TopLeft();
 				LeftForward();
 				TopRight();
@@ -3285,7 +3475,7 @@ void OrientYellowCorners(void) {
 				LeftForward();
 				TopRight();
 			}
-			
+
 			if((red[2][0] == 4 || yellow[2][2] == 4 || blue[0][0] == 4) && (red[2][0] == 1 || yellow[2][2] == 1 || blue[0][0] == 1) && (yellow[2][0] == 4 || orange[2][2] == 4 || blue[2][2] == 4) && (yellow[2][0] == 6 || orange[2][2] == 6 || blue[2][2] == 6))
 			{
 				BottomRight();
@@ -3300,7 +3490,7 @@ void OrientYellowCorners(void) {
 				LeftBackward();
 				BottomLeft();
 				LeftForward();
-				
+
 				BackRight();
 				LeftForward();
 				BackLeft();
@@ -3318,9 +3508,9 @@ void OrientYellowCorners(void) {
 }
 
 void FullYellowSide(void) {
-	
+
 	//Using the RED BLUE corner as constant point
-	
+
 	while(yellow[0][0] != 2 || yellow[0][2] != 2 || yellow[2][0] != 2 || yellow[2][2] != 2)
 	{
 		if(red[2][0] == 2 || blue[0][0] == 2)
@@ -3338,7 +3528,7 @@ void FullYellowSide(void) {
 }
 
 void OrientFinalEdges(void) {
-	
+
 	while(green[0][0] != 5 || green[1][0] != 5 || green[2][0] != 5 || red[0][0] != 6 || red[1][0] != 6 || red[2][0] != 6)
 	{
 		//NO side completed
@@ -3348,12 +3538,12 @@ void OrientFinalEdges(void) {
 			LeftBackward();
 			TopLeft();
 			LeftForward();
-			
+
 			BottomLeft();
 			LeftForward();
 			BottomRight();
 			LeftBackward();
-			
+
 			TopRight();
 			LeftBackward();
 			TopLeft();
@@ -3374,7 +3564,7 @@ void OrientFinalEdges(void) {
 			LeftBackward();
 			TopLeft();
 			LeftForward();
-			
+
 			BottomLeft();
 			LeftForward();
 			BottomRight();
@@ -3421,12 +3611,12 @@ void OrientFinalEdges(void) {
 				LeftBackward();
 				BackRight();
 				LeftForward();
-				
+
 				FrontLeft();
 				LeftForward();
 				FrontRight();
 				LeftBackward();
-				
+
 				BackLeft();
 				LeftBackward();
 				BackRight();
@@ -3447,7 +3637,7 @@ void OrientFinalEdges(void) {
 				LeftBackward();
 				BackRight();
 				LeftForward();
-				
+
 				FrontLeft();
 				LeftForward();
 				FrontRight();
@@ -3495,12 +3685,12 @@ void OrientFinalEdges(void) {
 				LeftBackward();
 				TopLeft();
 				LeftForward();
-				
+
 				BottomLeft();
 				LeftForward();
 				BottomRight();
 				LeftBackward();
-				
+
 				TopRight();
 				LeftBackward();
 				TopLeft();
@@ -3521,7 +3711,7 @@ void OrientFinalEdges(void) {
 				LeftBackward();
 				TopLeft();
 				LeftForward();
-				
+
 				BottomLeft();
 				LeftForward();
 				BottomRight();
@@ -3568,12 +3758,12 @@ void OrientFinalEdges(void) {
 				LeftBackward();
 				FrontLeft();
 				LeftForward();
-				
+
 				BackRight();
 				LeftForward();
 				BackLeft();
 				LeftBackward();
-				
+
 				FrontRight();
 				LeftBackward();
 				FrontLeft();
@@ -3594,7 +3784,7 @@ void OrientFinalEdges(void) {
 				LeftBackward();
 				FrontLeft();
 				LeftForward();
-				
+
 				BackRight();
 				LeftForward();
 				BackLeft();
@@ -3641,12 +3831,12 @@ void OrientFinalEdges(void) {
 				LeftBackward();
 				BottomLeft();
 				LeftForward();
-				
+
 				TopLeft();
 				LeftForward();
 				TopRight();
 				LeftBackward();
-				
+
 				BottomRight();
 				LeftBackward();
 				BottomLeft();
@@ -3667,7 +3857,7 @@ void OrientFinalEdges(void) {
 				LeftBackward();
 				BottomLeft();
 				LeftForward();
-				
+
 				TopLeft();
 				LeftForward();
 				TopRight();
@@ -3695,8 +3885,11 @@ void OrientFinalEdges(void) {
 
 
 
+
+/* USER CODE END 0 */
+
 /**
-	* @brief  The application entry point.
+  * @brief  The application entry point.
   * @retval int
   */
 int main(void)
@@ -3704,7 +3897,7 @@ int main(void)
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
-  
+
 
   /* MCU Configuration--------------------------------------------------------*/
 
@@ -3727,24 +3920,15 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
-  /* USER CODE END 2 */
 
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-	//HAL_UART_Receive_DMA(&huart2, Moves, 500);
-	
-
-
-
-
-//Cube is oriented so Red is facing forward and green is on top
-WhiteCross();
+//These functions solve the cube and find the array of moves needed for the solve
+/*WhiteCross();
 WhiteCorners();
 MiddleLayer();
 YellowCross();
 OrientYellowCorners();
 FullYellowSide();
-OrientFinalEdges();
+OrientFinalEdges();*/
 
 /* FrontRight    = 1
  * BackLeft      = 2
@@ -3759,91 +3943,311 @@ OrientFinalEdges();
  * TopLeft       = 11
  * BottomLeft    = 12
  * */
- 
+
+
 for(int i = 0; i <= m; i++)
 		{
-			switch(Moves[i])
+			switch(Moves[i])	//switch case for all moves to be performed by motors on cube
 			{
-				case 1:
-					for(int i = 1; i <= 102; i++)
+				case 1:																		//first twelve cases are for a move in the same direction as the previous move for that particular motor
+					for(int i = 0; i <= 31; i++)
 					{
 						FrontRightMotor();
 					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
 					break;
 				case 2:
-					for(int i = 1; i <= 102; i++)
+					for(int i = 0; i <= 31; i++)
 					{
-						BackLeft();
+						BackLeftMotor();
 					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
 					break;
 				case 3:
-					for(int i = 1; i <= 102; i++)
+					for(int i = 0; i <= 31; i++)
 					{
 						RightForwardMotor();
 					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
 					break;
 				case 4:
-					for(int i = 1; i <= 102; i++)
+					for(int i = 0; i <= 32; i++)
 					{
 						LeftBackwardMotor();
 					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
 					break;
 				case 5:
-					for(int i = 1; i <= 102; i++)
+					for(int i = 0; i <= 31; i++)
 					{
 						TopRightMotor();
 					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
 					break;
 				case 6:
-					for(int i = 1; i <= 102; i++)
+					for(int i = 0; i <= 31; i++)
 					{
 						BottomRightMotor();
 					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
 					break;
 				case 7:
-					for(int i = 1; i <= 102; i++)
+					for(int i = 0; i <= 31; i++)
 					{
 						FrontLeftMotor();
 					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
 					break;
 				case 8:
-					for(int i = 1; i <= 102; i++)
+					for(int i = 0; i <= 31; i++)
 					{
 						BackRightMotor();
 					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
 					break;
 				case 9:
-					for(int i = 1; i <= 102; i++)
+					for(int i = 0; i <= 31; i++)
 					{
 						RightBackwardMotor();
 					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
 					break;
 				case 10:
-					for(int i = 1; i <= 102; i++)
+					for(int i = 0; i <= 31; i++)
 					{
 						LeftForwardMotor();
 					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
 					break;
 				case 11:
-					for(int i = 1; i <= 102; i++)
+					for(int i = 0; i <= 31; i++)
 					{
 						TopLeftMotor();
 					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
 					break;
 				case 12:
-					for(int i = 1; i <= 102; i++)
+					for(int i = 0; i <= 31; i++)
 					{
 						BottomLeftMotor();
 					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 13:																			//second 12 cases are for a move in the opposite direction of the previous move for that particular motor (needs to turn more because of hitch observed)
+					for(int i = 0; i <= 36; i++)
+					{
+						FrontRightMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 14:
+					for(int i = 0; i <= 36; i++)
+					{
+						BackLeftMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 15:
+					for(int i = 0; i <= 36; i++)
+					{
+						RightForwardMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 16:
+					for(int i = 0; i <= 36; i++)
+					{
+						LeftBackwardMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 17:
+					for(int i = 0; i <= 36; i++)
+					{
+						TopRightMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 18:
+					for(int i = 0; i <= 36; i++)
+					{
+						BottomRightMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 19:
+					for(int i = 0; i <= 36; i++)
+					{
+						FrontLeftMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 20:
+					for(int i = 0; i <= 36; i++)
+					{
+						BackRightMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 21:
+					for(int i = 0; i <= 36; i++)
+					{
+						RightBackwardMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 22:
+					for(int i = 0; i <= 36; i++)
+					{
+						LeftForwardMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 23:
+					for(int i = 0; i <= 36; i++)
+					{
+						TopLeftMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 24:
+					for(int i = 0; i <= 36; i++)
+					{
+						BottomLeftMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 25:																		//last 12 cases are for the first move of the solve (After the motor are hand turned they need a small amount of extra movement for a 90 degree turn)
+					for(int i = 0; i <= 34; i++)
+					{
+						FrontRightMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 26:
+					for(int i = 0; i <= 34; i++)
+					{
+						BackLeftMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 27:
+					for(int i = 0; i <= 34; i++)
+					{
+						RightForwardMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 28:
+					for(int i = 0; i <= 34; i++)
+					{
+						LeftBackwardMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 29:
+					for(int i = 0; i <= 34; i++)
+					{
+						TopRightMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 30:
+					for(int i = 0; i <= 34; i++)
+					{
+						BottomRightMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 31:
+					for(int i = 0; i <= 34; i++)
+					{
+						FrontLeftMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 32:
+					for(int i = 0; i <= 34; i++)
+					{
+						BackRightMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 33:
+					for(int i = 0; i <= 34; i++)
+					{
+						RightBackwardMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 34:
+					for(int i = 0; i <= 34; i++)
+					{
+						LeftForwardMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 35:
+					for(int i = 0; i <= 34; i++)
+					{
+						TopLeftMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
+					break;
+				case 36:
+					for(int i = 0; i <= 34; i++)
+					{
+						BottomLeftMotor();
+					}
+					GPIOA->ODR = 0x0;
+					for(int i = 0; i <= 500000; i++);
 					break;
 				default:		//for empty spaces at the end of the Moves array
 					break;
 			}
 		}
- 
 
+		GPIOB->ODR = 0x8;  //signifies that the solve has completed
 
-	
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
@@ -3862,7 +4266,7 @@ void SystemClock_Config(void)
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
-  /** Initializes the CPU, AHB and APB busses clocks 
+  /** Initializes the CPU, AHB and APB busses clocks
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
@@ -3872,7 +4276,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  /** Initializes the CPU, AHB and APB busses clocks 
+  /** Initializes the CPU, AHB and APB busses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
@@ -3937,23 +4341,20 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8 
-                          |GPIO_PIN_9|GPIO_PIN_10, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_3|GPIO_PIN_4, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_3|GPIO_PIN_4, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, LD3_Pin|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : PA5 PA6 PA7 PA8 
-                           PA9 PA10 */
-  GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8 
-                          |GPIO_PIN_9|GPIO_PIN_10;
+  /*Configure GPIO pins : PA0 PA1 PA3 PA4 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_3|GPIO_PIN_4;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PB0 PB1 PB3 PB4 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_3|GPIO_PIN_4;
+  /*Configure GPIO pins : LD3_Pin PB5 PB6 PB7 */
+  GPIO_InitStruct.Pin = LD3_Pin|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -3962,17 +4363,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-  /* Prevent unused argument(s) compilation warning */
-  UNUSED(huart);
 
-  /* NOTE : This function should not be modified, when the callback is needed,
-            the HAL_UART_RxCpltCallback can be implemented in the user file.
-   */
-		
-	
-}
 /* USER CODE END 4 */
 
 /**
@@ -3996,7 +4387,7 @@ void Error_Handler(void)
   * @retval None
   */
 void assert_failed(char *file, uint32_t line)
-{ 
+{
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
      tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
