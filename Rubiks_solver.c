@@ -42,7 +42,6 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
@@ -51,7 +50,6 @@ UART_HandleTypeDef huart2;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -59,7 +57,7 @@ static void MX_USART2_UART_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-	//Defines the matrix for each side of the cube
+ 	//Defines the matrix for each side of the cube
 	//Cube is oriented so Red is facing forward and green is on top
 
 /* Orange  = 1
@@ -118,352 +116,196 @@ int Top = 0;
 int Bottom = 0;
 
 
-//pins PB5, PB6, and PB7 used for DEMUX selection of motors
 void FrontRightMotor(void) {		//6 clockwise moves but are actually 6 counterclockwise moves from motor perspective
 	int i;
-	GPIOB->ODR = 0x00; //select 0
+  GPIOA->ODR = 0x0;	  //sets pin 6 so motor moves counterclockwise
 
-	GPIOA->ODR = 0x1;
-	for(i = 1; i<4000; i++);
 
-	GPIOA->ODR = 0x3;
-	for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x1;		//sends a pulse to the step pin so the motor will turn
 
-	GPIOA->ODR = 0x2;
-	for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 
-	GPIOA->ODR = 0xA;
-	for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x0;
 
-	GPIOA->ODR = 0x8;
-	for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 
-	GPIOA->ODR = 0x18;
-	for(i = 1; i<4000; i++);
-
-	GPIOA->ODR = 0x10;
-	for(i = 1; i<4000; i++);
-
-	GPIOA->ODR = 0x11;
-	for(i = 1; i<4000; i++);
 }
 
 void BackLeftMotor(void) {
 	int i;
-	GPIOB->ODR = 0x20;	//select 1
+  GPIOA->ODR = 0x0;	  //sets pin 6 so motor moves counterclockwise
 
-	GPIOA->ODR = 0x1;
-	for(i = 1; i<4000; i++);
 
-	GPIOA->ODR = 0x3;
-	for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x2;		//sends a pulse to the step pin so the motor will turn
 
-	GPIOA->ODR = 0x2;
-	for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 
-	GPIOA->ODR = 0xA;
-	for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x0;
 
-	GPIOA->ODR = 0x8;
-	for(i = 1; i<4000; i++);
-
-	GPIOA->ODR = 0x18;
-	for(i = 1; i<4000; i++);
-
-	GPIOA->ODR = 0x10;
-	for(i = 1; i<4000; i++);
-
-	GPIOA->ODR = 0x11;
-	for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 }
 
 void RightForwardMotor(void) {
 	int i;
-	GPIOB->ODR = 0x40;	//select 2
+  GPIOA->ODR = 0x0;	  //sets pin 6 so motor moves counterclockwise
 
-	GPIOA->ODR = 0x1;
-	for(i = 1; i<4000; i++);
 
-	GPIOA->ODR = 0x3;
-	for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x4;		//sends a pulse to the step pin so the motor will turn
 
-	GPIOA->ODR = 0x2;
-	for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 
-	GPIOA->ODR = 0xA;
-	for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x0;
 
-	GPIOA->ODR = 0x8;
-	for(i = 1; i<4000; i++);
-
-	GPIOA->ODR = 0x18;
-	for(i = 1; i<4000; i++);
-
-	GPIOA->ODR = 0x10;
-	for(i = 1; i<4000; i++);
-
-	GPIOA->ODR = 0x11;
-	for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 }
 
 void LeftBackwardMotor(void)	{
 	int i;
-	GPIOB->ODR = 0x60;	//select 3
+  GPIOA->ODR = 0x0;	  //sets pin 6 so motor moves counterclockwise
 
-	GPIOA->ODR = 0x1;
-	for(i = 1; i<4000; i++);
 
-	GPIOA->ODR = 0x3;
-	for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x8;		//sends a pulse to the step pin so the motor will turn
 
-	GPIOA->ODR = 0x2;
-	for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 
-	GPIOA->ODR = 0xA;
-	for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x0;
 
-	GPIOA->ODR = 0x8;
-	for(i = 1; i<4000; i++);
-
-	GPIOA->ODR = 0x18;
-	for(i = 1; i<4000; i++);
-
-	GPIOA->ODR = 0x10;
-	for(i = 1; i<4000; i++);
-
-	GPIOA->ODR = 0x11;
-	for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 }
 
 void TopRightMotor(void)	{
 	int i;
-	GPIOB->ODR = 0x80;	//select 4
+  GPIOA->ODR = 0x10;	  //sets pin 6 so motor moves counterclockwise
 
-	GPIOA->ODR = 0x1;
-	for(i = 1; i<4000; i++);
 
-	GPIOA->ODR = 0x3;
-	for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x1;		//sends a pulse to the step pin so the motor will turn
 
-	GPIOA->ODR = 0x2;
-	for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 
-	GPIOA->ODR = 0xA;
-	for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x0;
 
-	GPIOA->ODR = 0x8;
-	for(i = 1; i<4000; i++);
-
-	GPIOA->ODR = 0x18;
-	for(i = 1; i<4000; i++);
-
-	GPIOA->ODR = 0x10;
-	for(i = 1; i<4000; i++);
-
-	GPIOA->ODR = 0x11;
-	for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 }
 
 void BottomRightMotor(void) {
 	int i;
-	GPIOB->ODR = 0xA0;	//select 5
+  GPIOA->ODR = 0x0;	  //sets pin 6 so motor moves counterclockwise
 
-	GPIOA->ODR = 0x1;
-	for(i = 1; i<4000; i++);
 
-	GPIOA->ODR = 0x3;
-	for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x20;		//sends a pulse to the step pin so the motor will turn
 
-	GPIOA->ODR = 0x2;
-	for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 
-	GPIOA->ODR = 0xA;
-	for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x0;
 
-	GPIOA->ODR = 0x8;
-	for(i = 1; i<4000; i++);
-
-	GPIOA->ODR = 0x18;
-	for(i = 1; i<4000; i++);
-
-	GPIOA->ODR = 0x10;
-	for(i = 1; i<4000; i++);
-
-	GPIOA->ODR = 0x11;
-	for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 }
 void FrontLeftMotor(void) {	//6 counterclockwise moves but actually 6 clockwise moves from motor perspective
-		int i;
-		GPIOB->ODR = 0x00;	//select 0
+	int i;
+  GPIOA->ODR = 0x40;	  //sets pin 6 so motor moves clockwise
 
-		GPIOA->ODR = 0x11;
-		for(i = 1; i<4000; i++);
 
-		GPIOA->ODR = 0x10;
-		for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x1;		//sends a pulse to the step pin so the motor will turn
 
-		GPIOA->ODR = 0x18;
-		for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 
-		GPIOA->ODR = 0x8;
-		for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x0;
 
-		GPIOA->ODR = 0xA;
-		for(i = 1; i<4000; i++);
-
-		GPIOA->ODR = 0x2;
-		for(i = 1; i<4000; i++);
-
-		GPIOA->ODR = 0x3;
-		for(i = 1; i<4000; i++);
-
-		GPIOA->ODR = 0x1;
-		for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 }
 
 void BackRightMotor(void) {
-		int i;
-		GPIOB->ODR = 0x20;	//select 1
+	int i;
+  GPIOA->ODR = 0x40;	  //sets pin 6 so motor moves clockwise
 
-		GPIOA->ODR = 0x11;
-		for(i = 1; i<4000; i++);
 
-		GPIOA->ODR = 0x10;
-		for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x2;		//sends a pulse to the step pin so the motor will turn
 
-		GPIOA->ODR = 0x18;
-		for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 
-		GPIOA->ODR = 0x8;
-		for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x0;
 
-		GPIOA->ODR = 0xA;
-		for(i = 1; i<4000; i++);
-
-		GPIOA->ODR = 0x2;
-		for(i = 1; i<4000; i++);
-
-		GPIOA->ODR = 0x3;
-		for(i = 1; i<4000; i++);
-
-		GPIOA->ODR = 0x1;
-		for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 }
 
 void RightBackwardMotor(void) {
-		int i;
-		GPIOB->ODR = 0x40;	//select 2
+	int i;
+  GPIOA->ODR = 0x40;	  //sets pin 6 so motor moves clockwise
 
-		GPIOA->ODR = 0x11;
-		for(i = 1; i<4000; i++);
 
-		GPIOA->ODR = 0x10;
-		for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x4;		//sends a pulse to the step pin so the motor will turn
 
-		GPIOA->ODR = 0x18;
-		for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 
-		GPIOA->ODR = 0x8;
-		for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x0;
 
-		GPIOA->ODR = 0xA;
-		for(i = 1; i<4000; i++);
-
-		GPIOA->ODR = 0x2;
-		for(i = 1; i<4000; i++);
-
-		GPIOA->ODR = 0x3;
-		for(i = 1; i<4000; i++);
-
-		GPIOA->ODR = 0x1;
-		for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 }
 
 void LeftForwardMotor(void) {
-		int i;
-		GPIOB->ODR = 0x60;	//select 3
+	int i;
+  GPIOA->ODR = 0x40;	  //sets pin 6 so motor moves clockwise
 
-		GPIOA->ODR = 0x11;
-		for(i = 1; i<4000; i++);
 
-		GPIOA->ODR = 0x10;
-		for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x8;		//sends a pulse to the step pin so the motor will turn
 
-		GPIOA->ODR = 0x18;
-		for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 
-		GPIOA->ODR = 0x8;
-		for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x0;
 
-		GPIOA->ODR = 0xA;
-		for(i = 1; i<4000; i++);
-
-		GPIOA->ODR = 0x2;
-		for(i = 1; i<4000; i++);
-
-		GPIOA->ODR = 0x3;
-		for(i = 1; i<4000; i++);
-
-		GPIOA->ODR = 0x1;
-		for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 }
 
 void TopLeftMotor(void)	{
-		int i;
-		GPIOB->ODR = 0x80;		//select 4
+	int i;
+  GPIOA->ODR = 0x40;	  //sets pin 6 so motor moves clockwise
 
-		GPIOA->ODR = 0x11;
-		for(i = 1; i<4000; i++);
 
-		GPIOA->ODR = 0x10;
-		for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x10;		//sends a pulse to the step pin so the motor will turn
 
-		GPIOA->ODR = 0x18;
-		for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 
-		GPIOA->ODR = 0x8;
-		for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x0;
 
-		GPIOA->ODR = 0xA;
-		for(i = 1; i<4000; i++);
-
-		GPIOA->ODR = 0x2;
-		for(i = 1; i<4000; i++);
-
-		GPIOA->ODR = 0x3;
-		for(i = 1; i<4000; i++);
-
-		GPIOA->ODR = 0x1;
-		for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 }
 
 void BottomLeftMotor(void)	{
-		int i;
-		GPIOB->ODR = 0xA0;	//select 5
+	int i;
+  GPIOA->ODR = 0x40;	  //sets pin 6 so motor moves clockwise
 
-		GPIOA->ODR = 0x11;
-		for(i = 1; i<4000; i++);
 
-		GPIOA->ODR = 0x10;
-		for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x20;		//sends a pulse to the step pin so the motor will turn
 
-		GPIOA->ODR = 0x18;
-		for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 
-		GPIOA->ODR = 0x8;
-		for(i = 1; i<4000; i++);
+	GPIOA->ODR = 0x0;
 
-		GPIOA->ODR = 0xA;
-		for(i = 1; i<4000; i++);
-
-		GPIOA->ODR = 0x2;
-		for(i = 1; i<4000; i++);
-
-		GPIOA->ODR = 0x3;
-		for(i = 1; i<4000; i++);
-
-		GPIOA->ODR = 0x1;
-		for(i = 1; i<4000; i++);
+	for(i = 0; i < 5000; i++)
+	{}
 }
 
 
@@ -510,24 +352,8 @@ int	yprevious3 = yellow[2][2];
 	green[2][1] = yprevious2;
 	green[2][2] = yprevious1;
 
-	if(Front == 1)
-	{
-		Moves[m] = 1;
-		m = m + 1;
-		Front = 1;
-	}
-	else if(Front == 2)
-	{
-		Moves[m] = 13;
-		m = m + 1;
-		Front = 1;
-	}
-	else
-	{
-		Moves[m] = 25;
-		m = m + 1;
-		Front = 1;
-	}
+	Moves[m] = 1;
+	m = m + 1;
 
 }
 
@@ -883,24 +709,9 @@ int	yprevious3 = yellow[2][2];
 	blue[0][1] = yprevious2;
 	blue[0][0] = yprevious1;
 
-	if(Front == 2)
-	{
-		Moves[m] = 7;
-		m = m + 1;
-		Front = 2;
-	}
-	else if(Front == 1)
-	{
-		Moves[m] = 19;
-		m = m + 1;
-		Front = 2;
-	}
-	else
-	{
-		Moves[m] = 31;
-		m = m + 1;
-		Front = 2;
-	}
+
+	Moves[m] = 7;
+	m = m + 1;
 }
 
 void BackRight(void) {
@@ -3917,18 +3728,17 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
 
 //These functions solve the cube and find the array of moves needed for the solve
-/*WhiteCross();
+WhiteCross();
 WhiteCorners();
 MiddleLayer();
 YellowCross();
 OrientYellowCorners();
 FullYellowSide();
-OrientFinalEdges();*/
+OrientFinalEdges();
 
 /* FrontRight    = 1
  * BackLeft      = 2
@@ -3943,307 +3753,173 @@ OrientFinalEdges();*/
  * TopLeft       = 11
  * BottomLeft    = 12
  * */
+ /*
+	for(int i = 0; i < 50; i++)
+	{
+		FrontRightMotor();
+	}
+	for(int i = 0; i < 1000000; i++){}
 
 
+	for(int i = 0; i < 50; i++)
+	{
+		FrontLeftMotor ();
+	}
+	for(int i = 0; i < 1000000; i++){}
+
+	for(int i = 0; i < 50; i++)
+	{
+		BackRightMotor ();
+	}
+	for(int i = 0; i < 1000000; i++){}
+
+	for(int i = 0; i < 50; i++)
+	{
+		BackLeftMotor ();
+	}
+	for(int i = 0; i < 1000000; i++){}
+
+	for(int i = 0; i < 50; i++)
+	{
+		RightForwardMotor ();
+	}
+	for(int i = 0; i < 1000000; i++){}
+
+	for(int i = 0; i < 50; i++)
+	{
+		RightBackwardMotor ();
+	}
+	for(int i = 0; i < 1000000; i++){}
+
+	for(int i = 0; i < 50; i++)
+	{
+		LeftForwardMotor ();
+	}
+	for(int i = 0; i < 1000000; i++){}
+
+	for(int i = 0; i < 50; i++)
+	{
+		LeftBackwardMotor ();
+	}
+	for(int i = 0; i < 1000000; i++){}
+
+	for(int i = 0; i < 50; i++)
+	{
+		BottomRightMotor ();
+	}
+	for(int i = 0; i < 1000000; i++){}
+
+	for(int i = 0; i < 50; i++)
+	{
+		BottomLeftMotor ();
+	}
+	for(int i = 0; i < 1000000; i++){}
+
+ */
 for(int i = 0; i <= m; i++)
 		{
 			switch(Moves[i])	//switch case for all moves to be performed by motors on cube
 			{
-				case 1:																		//first twelve cases are for a move in the same direction as the previous move for that particular motor
-					for(int i = 0; i <= 31; i++)
+				case 1:
+					for(int i = 0; i < 50; i++)
 					{
 						FrontRightMotor();
 					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
+
+					for(int i = 0; i < 500000; i++);
 					break;
 				case 2:
-					for(int i = 0; i <= 31; i++)
+					for(int i = 0; i < 50; i++)
 					{
 						BackLeftMotor();
 					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
+
+					for(int i = 0; i < 500000; i++);
 					break;
 				case 3:
-					for(int i = 0; i <= 31; i++)
+					for(int i = 0; i < 50; i++)
 					{
 						RightForwardMotor();
 					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
+
+					for(int i = 0; i < 500000; i++);
 					break;
 				case 4:
-					for(int i = 0; i <= 32; i++)
+					for(int i = 0; i < 50; i++)
 					{
 						LeftBackwardMotor();
 					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
+
+					for(int i = 0; i < 500000; i++);
 					break;
 				case 5:
-					for(int i = 0; i <= 31; i++)
+					for(int i = 0; i < 50; i++)
 					{
 						TopRightMotor();
 					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
+
+					for(int i = 0; i < 500000; i++);
 					break;
 				case 6:
-					for(int i = 0; i <= 31; i++)
+					for(int i = 0; i < 50; i++)
 					{
 						BottomRightMotor();
 					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
+
+					for(int i = 0; i < 500000; i++);
 					break;
 				case 7:
-					for(int i = 0; i <= 31; i++)
+					for(int i = 0; i < 50; i++)
 					{
 						FrontLeftMotor();
 					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
+
+					for(int i = 0; i < 500000; i++);
 					break;
 				case 8:
-					for(int i = 0; i <= 31; i++)
+					for(int i = 0; i < 50; i++)
 					{
 						BackRightMotor();
 					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
+
+					for(int i = 0; i < 500000; i++);
 					break;
 				case 9:
-					for(int i = 0; i <= 31; i++)
+					for(int i = 0; i < 50; i++)
 					{
 						RightBackwardMotor();
 					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
+
+					for(int i = 0; i < 500000; i++);
 					break;
 				case 10:
-					for(int i = 0; i <= 31; i++)
+					for(int i = 0; i < 50; i++)
 					{
 						LeftForwardMotor();
 					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
+
+					for(int i = 0; i < 500000; i++);
 					break;
 				case 11:
-					for(int i = 0; i <= 31; i++)
+					for(int i = 0; i < 50; i++)
 					{
 						TopLeftMotor();
 					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
+
+					for(int i = 0; i < 500000; i++);
 					break;
 				case 12:
-					for(int i = 0; i <= 31; i++)
+					for(int i = 0; i < 50; i++)
 					{
 						BottomLeftMotor();
 					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 13:																			//second 12 cases are for a move in the opposite direction of the previous move for that particular motor (needs to turn more because of hitch observed)
-					for(int i = 0; i <= 36; i++)
-					{
-						FrontRightMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 14:
-					for(int i = 0; i <= 36; i++)
-					{
-						BackLeftMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 15:
-					for(int i = 0; i <= 36; i++)
-					{
-						RightForwardMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 16:
-					for(int i = 0; i <= 36; i++)
-					{
-						LeftBackwardMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 17:
-					for(int i = 0; i <= 36; i++)
-					{
-						TopRightMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 18:
-					for(int i = 0; i <= 36; i++)
-					{
-						BottomRightMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 19:
-					for(int i = 0; i <= 36; i++)
-					{
-						FrontLeftMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 20:
-					for(int i = 0; i <= 36; i++)
-					{
-						BackRightMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 21:
-					for(int i = 0; i <= 36; i++)
-					{
-						RightBackwardMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 22:
-					for(int i = 0; i <= 36; i++)
-					{
-						LeftForwardMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 23:
-					for(int i = 0; i <= 36; i++)
-					{
-						TopLeftMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 24:
-					for(int i = 0; i <= 36; i++)
-					{
-						BottomLeftMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 25:																		//last 12 cases are for the first move of the solve (After the motor are hand turned they need a small amount of extra movement for a 90 degree turn)
-					for(int i = 0; i <= 34; i++)
-					{
-						FrontRightMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 26:
-					for(int i = 0; i <= 34; i++)
-					{
-						BackLeftMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 27:
-					for(int i = 0; i <= 34; i++)
-					{
-						RightForwardMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 28:
-					for(int i = 0; i <= 34; i++)
-					{
-						LeftBackwardMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 29:
-					for(int i = 0; i <= 34; i++)
-					{
-						TopRightMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 30:
-					for(int i = 0; i <= 34; i++)
-					{
-						BottomRightMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 31:
-					for(int i = 0; i <= 34; i++)
-					{
-						FrontLeftMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 32:
-					for(int i = 0; i <= 34; i++)
-					{
-						BackRightMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 33:
-					for(int i = 0; i <= 34; i++)
-					{
-						RightBackwardMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 34:
-					for(int i = 0; i <= 34; i++)
-					{
-						LeftForwardMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 35:
-					for(int i = 0; i <= 34; i++)
-					{
-						TopLeftMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				case 36:
-					for(int i = 0; i <= 34; i++)
-					{
-						BottomLeftMotor();
-					}
-					GPIOA->ODR = 0x0;
-					for(int i = 0; i <= 500000; i++);
-					break;
-				default:		//for empty spaces at the end of the Moves array
+
+					for(int i = 0; i < 500000; i++);
 					break;
 			}
 		}
 
 		GPIOB->ODR = 0x8;  //signifies that the solve has completed
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -4292,41 +3968,6 @@ void SystemClock_Config(void)
 }
 
 /**
-  * @brief USART2 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_USART2_UART_Init(void)
-{
-
-  /* USER CODE BEGIN USART2_Init 0 */
-
-  /* USER CODE END USART2_Init 0 */
-
-  /* USER CODE BEGIN USART2_Init 1 */
-
-  /* USER CODE END USART2_Init 1 */
-  huart2.Instance = USART2;
-  huart2.Init.BaudRate = 38400;
-  huart2.Init.WordLength = UART_WORDLENGTH_8B;
-  huart2.Init.StopBits = UART_STOPBITS_1;
-  huart2.Init.Parity = UART_PARITY_NONE;
-  huart2.Init.Mode = UART_MODE_TX_RX;
-  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
-  huart2.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
-  huart2.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
-  if (HAL_UART_Init(&huart2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN USART2_Init 2 */
-
-  /* USER CODE END USART2_Init 2 */
-
-}
-
-/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -4341,24 +3982,35 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_3|GPIO_PIN_4, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3
+                          |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, LD3_Pin|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : PA0 PA1 PA3 PA4 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_3|GPIO_PIN_4;
+  /*Configure GPIO pins : PA0 PA1 PA2 PA3
+                           PA4 PA5 PA6 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3
+                          |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : LD3_Pin PB5 PB6 PB7 */
-  GPIO_InitStruct.Pin = LD3_Pin|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
+  /*Configure GPIO pin : VCP_RX_Pin */
+  GPIO_InitStruct.Pin = VCP_RX_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
+  HAL_GPIO_Init(VCP_RX_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : LD3_Pin */
+  GPIO_InitStruct.Pin = LD3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  HAL_GPIO_Init(LD3_GPIO_Port, &GPIO_InitStruct);
 
 }
 
